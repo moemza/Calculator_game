@@ -29,10 +29,10 @@ class TestCalculatorGame(unittest.TestCase):
         self.assertEqual(result, "Nice one!!")  # Check the returned message
 
     # Test if wrong input is handled correctly
-    @patch('random.uniform', side_effect=[5, 2, 8, 4, 7, 3, 9, 3, 1, 8])  # Mock random numbers
+    @patch('random.randrange', side_effect=[5, 2, 8, 4, 7, 3, 9, 3, 1, 8])  # Mock random numbers
     @patch('random.choice', side_effect=["+", "-", "*", "/", "+"])  # Mock operator selection
     @patch('builtins.input', side_effect=["wrong_input", "2.5", 45, "hh", 9])  # Mock user inputs
-    def test_gameplay_with_wrong_input(self, mock_uniform, mock_choice, mock_input):
+    def test_gameplay_with_wrong_input(self, mock_uniform, mock_choice, mock_randrange):
         result = gameplay()  # Call the gameplay function
         self.assertEqual(result, "Try again!!")  # Check the returned message
 
